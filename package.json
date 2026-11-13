@@ -1,0 +1,22 @@
+{
+  "name": "@mrdevs2011/library",
+  "version": "1.0.0",
+  "description": "Lightweight client utilities and tools by mrdevs2011",
+  "main": "js/realtime.js",
+  "scripts": {
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrdevs2011/library.git"
+  },
+  "keywords": [
+    "realtime",
+    "chat",
+    "polling",
+    "utilities",
+    "mrdevs2011"
+  ],
+  "author": "mrdevs2011",
+  "license": "MIT"
+}
