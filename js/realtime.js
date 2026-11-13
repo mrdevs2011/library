@@ -33,6 +33,16 @@
     var selector = typeof target === 'string' ? target : null;
     var el = typeof target === 'string' ? document.querySelector(target) : target;
 
+    if (!selector && el) {
+      if (el.getAttribute('data-mr-realtime') !== null) {
+        selector = '[data-mr-realtime]';
+      } else if (el.id) {
+        selector = '#' + el.id;
+      } else if (el.className) {
+        selector = '.' + el.className.trim().split(/\s+/)[0];
+      }
+    }
+
     if (!el && selector) {
       document.addEventListener('DOMContentLoaded', function () {
         start(selector, options);
@@ -59,7 +69,7 @@
         .then(function (html) {
           var parser = new DOMParser();
           var doc = parser.parseFromString(html, 'text/html');
-          var newTarget = selector ? doc.querySelector(selector) : doc.body.querySelector(el.tagName);
+          var newTarget = selector ? doc.querySelector(selector) : (doc.querySelector('[data-mr-realtime]') || doc.querySelector('.' + el.className.trim().split(/\s+/)[0]));
           var currentTarget = typeof target === 'string' ? document.querySelector(target) : el;
 
           if (newTarget && currentTarget) {
